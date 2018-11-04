@@ -9,7 +9,7 @@ class CurrencyExchangeQuoteRow extends React.Component {
                 <td></td>
                 <td>{currencyExchange.forexPriceQuote.askPrice}</td>
                 <td>{currencyExchange.location}</td>
-                <td>{currencyExchange.forexPriceQuote.currencyPair}</td>
+                <td>{currencyExchange.forexPriceQuote.baseCurrency}/{currencyExchange.forexPriceQuote.quoteCurrency}</td>
             </tr>
         );
     }
