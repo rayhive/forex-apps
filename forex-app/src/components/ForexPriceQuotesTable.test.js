@@ -22,7 +22,6 @@ describe('<ForexPriceQuotesTable/>', () => {
 
         const wrapper = shallow(<ForexPriceQuotesTable currencyExchanges={mockCurrencyExchanges} />);
         expect(wrapper.find('table').length).toBe(1);
-        expect(wrapper.find('CurrencyExchangeRow').length).toBe(2);
         expect(wrapper.find('CurrencyExchangeQuoteRow').length).toBe(2);
     });
 });

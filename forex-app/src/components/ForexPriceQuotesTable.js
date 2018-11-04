@@ -1,6 +1,5 @@
 import React from 'react';
 
-import CurrencyExchangeRow from './CurrencyExchangeRow';
 import CurrencyExchangeQuoteRow from './CurrencyExchangeQuoteRow';
 
 class ForexPriceQuotesTable extends React.Component {
@@ -8,11 +7,6 @@ class ForexPriceQuotesTable extends React.Component {
         const rows = [];
 
         this.props.currencyExchanges.forEach((currencyExchange) => {
-            rows.push(
-                <CurrencyExchangeRow
-                    name={currencyExchange.name}
-                    key={currencyExchange.name} />
-            );
             rows.push(
                 <CurrencyExchangeQuoteRow
                     currencyExchange={currencyExchange}
@@ -22,12 +16,13 @@ class ForexPriceQuotesTable extends React.Component {
 
         return (
             <table>
+                <caption>Forex Price Quotes:</caption>
                 <thead>
                     <tr>
-                        <th>Forex Price Quotes</th>
-                        <th>Ask Price</th>
-                        <th>Location</th>
-                        <th>Currency pair</th>
+                        <th></th>
+                        <th scope="col">Ask Price</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Currency pair</th>
                     </tr>
                 </thead>
                 <tbody>{rows}</tbody>
