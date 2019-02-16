@@ -1,0 +1,13 @@
+.local-quote-form input:not([type=checkbox]):not([type=radio]) {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  .local-quote-form button {
+    margin-top: 1em; 
+    border: 1px solid blue;
+    background-color: white;
+    padding: .5em 1em;
+    cursor: pointer;
+  }
