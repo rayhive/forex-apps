@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './AddLocalQuote.css';
+import ForexInput from './ForexInput';
 
 class AddLocalQuote extends React.Component {
     constructor(props) {
@@ -16,44 +17,39 @@ class AddLocalQuote extends React.Component {
     }
 
     handleInputChange(event) {
-        this.setState({ value: event.target.value });
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
     handleAddLocalQuote(event) {
         event.preventDefault();
+        this.props.onLocalQuoteAdd(Object.assign({}, this.state));
     }
 
     render() {
         return (
             <div className="local-quote-form">
                 <form onSubmit={this.handleAddLocalQuote}>
-                    <div className="formGroup">
-                        <label for="currencyExchangeName">Currency Exchange:</label>
-                        <input
-                            id="currencyExchangeName"
-                            name="currencyExchangeName"
-                            type="text"
-                            value={this.state.currencyExchangeName}
-                            onChange={this.handleInputChange} />
-                    </div>
-                    <div className="formGroup">
-                        <label for="currencyExchangeAddress">Address:</label>
-                        <input
-                            id="currencyExchangeAddress"
-                            name="currencyExchangeAddress"
-                            type="text"
-                            value={this.state.currencyExchangeAddress}
-                            onChange={this.handleInputChange} />
-                    </div>
-                    <div className="formGroup">
-                        <label for="askPrice">Ask Price:</label>
-                        <input
-                            id="askPrice"
-                            name="askPrice"
-                            type="number"
-                            value={this.state.askPrice}
-                            onChange={this.handleInputChange} />
-                    </div>
+                    <ForexInput
+                        label="Currency Exchange"
+                        name="currencyExchangeName"
+                        type="text"
+                        onInputChange={this.handleInputChange} />
+                    <ForexInput
+                        label="Address"
+                        name="currencyExchangeAddress"
+                        type="text"
+                        onInputChange={this.handleInputChange} />
+                    <ForexInput
+                        label="Ask Price"
+                        name="askPrice"
+                        type="number"
+                        onInputChange={this.handleInputChange} />
                     <button type="submit">Add Quote</button>
                 </form>
             </div>
