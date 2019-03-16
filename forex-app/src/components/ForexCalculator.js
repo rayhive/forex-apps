@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ForexPriceQuotesTable from './ForexPriceQuotesTable';
+import AddLocalQuote from './AddLocalQuote';
 
 const CURRENCY_EXCHANGES = [
     {
@@ -39,14 +40,29 @@ class ForexCalculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            localQuotes: []
+            localQuotes: CURRENCY_EXCHANGES,
+            baseCurrency: "AUD",
+            quoteCurrency: "USD"
         };
         this.handleLocalQuoteAdd = this.handleLocalQuoteAdd.bind(this);
     }
 
     handleLocalQuoteAdd(quote) {
+        let quoteId = this.state.localQuotes.length - 1;
+        var newQuote = {
+            id: quoteId,
+            name: quote.currencyExchangeName,
+            location: quote.currencyExchangeAddress,
+            forexPriceQuote: {
+                baseCurrency: this.state.baseCurrency,
+                quoteCurrency: this.state.quoteCurrency,
+                bidPrice: 0,
+                askPrice: quote.askPrice
+            }
+        }
+
         this.setState({
-            localQuotes: [].concat(this.state.localQuotes).concat(quote)
+            localQuotes: [].concat(this.state.localQuotes).concat(newQuote)
         });
     }
 
@@ -54,9 +70,9 @@ class ForexCalculator extends React.Component {
 
         return (
             <div >
-                <ForexPriceQuotesTable currencyExchanges={CURRENCY_EXCHANGES} />
+                <AddLocalQuote onLocalQuoteAdd={this.handleLocalQuoteAdd} />
+                <ForexPriceQuotesTable currencyExchanges={this.state.localQuotes} />
             </div>
-
         );
     }
 }
