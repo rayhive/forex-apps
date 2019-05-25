@@ -15,8 +15,8 @@ class ForexPriceQuotesTable extends React.Component {
         });
 
         return (
-            <table>
-                <caption>Forex Price Quotes:</caption>
+            <table className="table table-striped table-bordered">
+                <caption>Forex Price Quotes</caption>
                 <thead>
                     <tr>
                         <th></th>
