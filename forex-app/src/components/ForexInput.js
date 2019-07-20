@@ -20,7 +20,7 @@ class ForexInput extends React.Component {
 
         return (
             <fieldset>
-                <legend>{inputLabel}:</legend>
+                <legend>{inputLabel}</legend>
                 <input
                     name={nameAttributeValue}
                     type={typeAttributeValue}

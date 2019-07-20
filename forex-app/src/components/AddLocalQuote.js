@@ -50,7 +50,7 @@ class AddLocalQuote extends React.Component {
                         name="askPrice"
                         type="number"
                         onInputChange={this.handleInputChange} />
-                    <button type="submit">Add Quote</button>
+                    <button type="submit" className="btn btn-primary m-2">Add Quote</button>
                 </form>
             </div>
         );
